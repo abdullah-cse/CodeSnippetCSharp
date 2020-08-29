@@ -105,11 +105,12 @@ private void btnAbout_Click(object sender, EventArgs e)
 
 # 7. Custom Shortcut
 ```csharp
-// In Form_Load Add Key Preview
-//this.KeyPreview=true;
+// In Form_Load event,  Add Key Preview
+this.KeyPreview=true;
+
 
 // In Form_Keydown Add the following Code
-if (e.Control == true && e.KeyCode == Keys.N)
+if (e.Control == true && e.KeyCode == Keys.N)	//Here, We used 'N' as Shortcut Key
             {
                 button2.PerformClick();
             }

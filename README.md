@@ -117,7 +117,7 @@ if (e.Control == true && e.KeyCode == Keys.N)	//Here, We used 'N' as Shortcut Ke
             }
 
 ```
-# 8.
+# 8. Digital Clock in C# Form
 * Add a timerClock Event
 * In timerClock_Tick, Write code
 * In Home_Load, start the timerClock

@@ -1,7 +1,7 @@
 # CodeSnippet C#
 #### Snippet of C# code to use other C# Project. All of Code Snippet are written in Markdown Format.
 
-# Minimize Window
+# 1. Minimize Window
 ```csharp
 private void buttonMin_Click(object sender, EventArgs e)
         {
@@ -10,7 +10,9 @@ private void buttonMin_Click(object sender, EventArgs e)
         }
 ```
 
-# Maximize & Back to Normal Screen
+
+
+# 2. Maximize & Back to Normal Screen
 ```csharp
 /using [Namespace যা হবে].Properties;	//আইকন বদলাতে এটা রেফারেন্সে দিতে হবে।
 //Maximize Window and Back to Normal Screen
@@ -33,7 +35,8 @@ private void buttonMin_Click(object sender, EventArgs e)
 ```
 
 
-# Exit Application
+
+# 3. Exit Application
 ```csharp
  private void buttonExit_Click(object sender, EventArgs e)
         {
@@ -42,3 +45,73 @@ private void buttonMin_Click(object sender, EventArgs e)
  ```
  
  
+ 
+# 4. Dragging Window from Panel
+```csharp
+// Panel1 means from which panel
+//using System.Runtime.InteropServices;
+
+  [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+  private extern static void ReleaseCapture();
+  [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+  private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+```
+
+
+
+
+# 5. Play Music 
+```csharp
+using System.Media;
+SoundPlayer saplay = new SoundPlayer(@"LocationofMedia.wav");
+saplay.Play();
+
+```
+
+
+
+
+# 6. Form opening inside a panel
+```csharp
+private Form activeForm = null;
+        private void openChildForm(Form ChildForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = ChildForm;
+            ChildForm.TopLevel = false;
+            ChildForm.FormBorderStyle = FormBorderStyle.None;
+            ChildForm.Dock = DockStyle.Fill;
+            panelChildForm.Controls.Add(ChildForm);
+            panelChildForm.Tag = ChildForm;
+            ChildForm.BringToFront();
+            ChildForm.Show();
+        }
+//Open About Form to know who are behind the sence
+private void btnAbout_Click(object sender, EventArgs e)
+        {
+            //Open About Form to know who are behind the sence
+            openChildForm(new About());
+        }
+```
+
+
+
+# 7. Custom Shortcut
+```csharp
+// In Form_Load Add Key Preview
+//this.KeyPreview=true;
+
+// In Form_Keydown Add the following Code
+if (e.Control == true && e.KeyCode == Keys.N)
+            {
+                button2.PerformClick();
+            }
+
+```

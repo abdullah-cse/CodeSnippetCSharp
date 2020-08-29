@@ -36,6 +36,7 @@ using [Namespace যা হবে].Properties;	//আইকন বদলাতে
 
 
 
+
 # 3. Exit Application
 ```csharp
  private void buttonExit_Click(object sender, EventArgs e)
@@ -43,9 +44,9 @@ using [Namespace যা হবে].Properties;	//আইকন বদলাতে
             Application.Exit();
         }
  ```
- 
- 
- 
+
+
+
 # 4. Dragging Window from Panel
 ```csharp
 
@@ -55,7 +56,7 @@ using System.Runtime.InteropServices;
   private extern static void ReleaseCapture();
   [DllImport("user32.DLL", EntryPoint = "SendMessage")]
   private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)	// Panel1 means from which panel
         {
             ReleaseCapture();
@@ -66,7 +67,7 @@ using System.Runtime.InteropServices;
 
 
 
-# 5. Play Music 
+# 5. Play Music
 ```csharp
 using System.Media;
 SoundPlayer saplay = new SoundPlayer(@"LocationofMedia.wav");
@@ -115,4 +116,22 @@ if (e.Control == true && e.KeyCode == Keys.N)	//Here, We used 'N' as Shortcut Ke
                 button2.PerformClick();
             }
 
+```
+# 8.
+* Add a timerClock Event
+* In timerClock_Tick, Write code
+* In Home_Load, start the timerClock
+
+```csharp
+//In Form Load event
+private void Home_Load(object sender, EventArgs e)
+        {
+            timerClock.Start();     //To Show Current Date & Time from System.
+        }
+ private void timerClock_Tick(object sender, EventArgs e)
+        {
+            //Date & Time update every 100 ms, by this method
+            labelTime.Text = DateTime.Now.ToString("HH:mm:ss");     //"HH"24 Hour Format, "hh" 12 Hour Format
+            labelDate.Text = DateTime.Now.ToString("dd MMMM, yyyy");
+        }
 ```

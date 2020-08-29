@@ -14,7 +14,7 @@ private void buttonMin_Click(object sender, EventArgs e)
 
 # 2. Maximize & Back to Normal Screen
 ```csharp
-/using [Namespace যা হবে].Properties;	//আইকন বদলাতে এটা রেফারেন্সে দিতে হবে।
+using [Namespace যা হবে].Properties;	//আইকন বদলাতে এটা রেফারেন্সে দিতে হবে।
 //Maximize Window and Back to Normal Screen
         private void buttonMax_Click(object sender, EventArgs e)
         {          
@@ -48,15 +48,15 @@ private void buttonMin_Click(object sender, EventArgs e)
  
 # 4. Dragging Window from Panel
 ```csharp
-// Panel1 means from which panel
-//using System.Runtime.InteropServices;
+
+using System.Runtime.InteropServices;
 
   [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
   private extern static void ReleaseCapture();
   [DllImport("user32.DLL", EntryPoint = "SendMessage")]
   private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void panel1_MouseDown(object sender, MouseEventArgs e)	// Panel1 means from which panel
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
@@ -71,7 +71,7 @@ private void buttonMin_Click(object sender, EventArgs e)
 using System.Media;
 SoundPlayer saplay = new SoundPlayer(@"LocationofMedia.wav");
 saplay.Play();
-
+//There are lot of method also, see SoundPlay Windows Repo
 ```
 
 

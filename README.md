@@ -135,3 +135,20 @@ private void Home_Load(object sender, EventArgs e)
             labelDate.Text = DateTime.Now.ToString("dd MMMM, yyyy");
         }
 ```
+# 9. TextBox only accepting Number & Backspace
+```csharp
+	//সিরিয়াল নাম্বারের ঘরে শুধুমাত্র নাম্বার আর Backspace গ্রহনযোগ্য।
+        //Backspace এজন্য, কোন সংখ্যা লিখলে যেন মোছা যায়।
+        // এখানে ৮ হলো Backspace Key Code Constant
+       private void textBoxSerial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Char chr = e.KeyChar;
+            if (!Char.IsDigit(chr) && chr != 8)
+            {
+                {
+                    e.Handled = true;
+                    MessageBox.Show("Only Number is accepted");
+                }
+            }
+        }
+```
